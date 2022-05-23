@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: marvelworld
+  labels:
+    app: marvelworld
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: marvelworld
+  template:
+    metadata:
+      labels:
+        app: marvelworld
+    spec:
+      containers:
+      - name: marvelworld-container
+        image: hkh8308/marvelworld:1.0
+        ports:
+        - containerPort: 8080

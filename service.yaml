@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: marvelworld-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: marvelworld
+  ports:
+    - port: 80
+      targetPort: 8080
