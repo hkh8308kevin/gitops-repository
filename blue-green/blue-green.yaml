@@ -3,32 +3,32 @@
 apiVersion: argoproj.io/v1alpha1     # apps/v1 대신 argoproj.io/v1alpha1을 사용한다
 kind: Rollout  # Deplyment 대신 Rollout을 사용한다
 metadata:
-  name: rollout-bluegreen
+  name: marvelworld-bluegreen
 spec:
   replicas: 2
   revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: rollout-bluegreen
+      app: marvelworld-bluegreen
   template:
     metadata:
       labels:
-        app: rollout-bluegreen
+        app: marvelworld-bluegreen
     spec:
       containers:
-      - name: rollouts-demo
+      - name: marvelworld-container
         image: hkh8308/marvelworld:1.0
-       #image: argoproj/rollouts-demo:green
+       #image: hkh8308/marvelworld:2.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
   strategy:
     blueGreen: 
       #activeService는 이전의 배포된 Blue 서비스
-      activeService: rollout-bluegreen-active
+      activeService: marvelworld-bluegreen-active
       
       #previewService는 새롭게 배포될 Green 서비스
-      previewService: rollout-bluegreen-preview
+      previewService: marvelworld-bluegreen-preview
       
       #autoPromotioEnabled 옵션은 Blue/Green 배포를 자동으로 진행할 것인지 여부. false 옵션을 사용해 수동으로 지정
       autoPromotionEnabled: false
@@ -37,10 +37,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: rollout-bluegreen-active
+  name: marvelworld-bluegreen-active
 spec:
   selector:
-    app: rollout-bluegreen
+    app: marvelworld-bluegreen
   ports:
   - protocol: TCP
     port: 80
@@ -50,10 +50,10 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: rollout-bluegreen-preview
+  name: marvelworld-bluegreen-preview
 spec:
   selector:
-    app: rollout-bluegreen
+    app: marvelworld-bluegreen
   ports:
   - protocol: TCP
     port: 80
