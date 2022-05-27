@@ -4,6 +4,7 @@ apiVersion: argoproj.io/v1alpha1     # apps/v1 대신 argoproj.io/v1alpha1을 �
 kind: Rollout  # Deplyment 대신 Rollout을 사용한다
 metadata:
   name: marvelworld-bluegreen
+  namespace: rollout
 spec:
   replicas: 2
   revisionHistoryLimit: 2
