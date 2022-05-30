@@ -6,8 +6,8 @@ metadata:
   name: marvelworld-bluegreen
   namespace: rollout
 spec:
-  replicas: 2
-  revisionHistoryLimit: 4
+  replicas: 4
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: marvelworld-bluegreen
