@@ -22,7 +22,7 @@ spec:
        #image: hkh8308/marvelworld:2.0
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 80
   strategy:
     blueGreen: 
       #activeService는 이전의 배포된 Blue 서비스
