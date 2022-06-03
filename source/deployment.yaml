@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: marvelworld-container
-        image: hkh8308/marvelworld:2.0
+        image: hkh8308/marvelworld:1.0
         ports:
         - containerPort: 8080
       nodeSelector:
